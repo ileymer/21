@@ -1,3 +1,33 @@
+ else if (f[ii] == '%')
+        printf ("%c", '%');
+    else if (f[ii] != '\0')
+        printf ("%c", f[ii]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
