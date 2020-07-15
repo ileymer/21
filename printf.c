@@ -1,4 +1,162 @@
- else if (f[ii] == '%')
+ int     type_xX(va_list *vl, int m[12])
+{
+    int n;
+    int k;
+    char a[21];
+
+    n = va_arg(*vl, int);
+    di1(a);
+    k = xtoc(a, n, m);
+    if (m[3] == 1)
+        m[3] = 2;
+    if (m[6] >= k)
+    {
+        m[8] = k;;
+        k = 0;
+    }
+    print_x(a, m, k, n);
+    //printf("%s",a);
+    return (0);
+}
+
+void    signx(int f, int f1)
+{
+    if (f == 2)
+    {
+        printf("%c", '0');
+        if (f1 == 2)
+            printf("%c", 'X');
+        else
+            printf("%c", 'x'); 
+    }
+    if (f == 1)
+        printf("%c", '0');
+}
+
+int     print_x(char a[15], int m[8], int k, int n)
+{
+    if (m[0] == 0)
+    {
+        if (m[4] == 1 && m[7] == 0)
+        {
+            signx(m[3], m[10]);
+            writeln(m[5] - m[6] - m[3] - k, '0');
+        }
+        else
+        {
+            writeln(m[5] - m[6] - m[3] - k, ' ');
+            signx(m[3], m[10]);
+        }
+    }
+    if (m[0] == 1)
+        signx(m[3], m[10]);
+    writeln(m[6] - k - m[8], '0');
+    print_di1(a);
+    if (m[0] == 1)
+        writeln(m[5] - m[6] - m[3] - k, ' ');
+}
+
+int     xtoc(char a[21], int n, int m[12])
+{
+    int k;
+    int i;
+
+    k = 0;
+    i = 0;
+    if (n < 0)
+    {
+        n = n * (-1);
+    }
+    if (n == 0)
+    {
+        k++;
+        a[i] = '0';
+    }
+    while (n > 0)
+    {
+        a[i++] = xX(n % 16, m[10]);
+        n = n / 16;
+        k++;
+    }
+    if (k > m[6])
+        m[6] = 0;
+    return k;
+}
+
+int     flag1(char c)
+{
+    if (c == '-' || c == ' ' || c == '+' || c == '#' || c == '0')
+        return (1);
+    return (0);
+}
+
+
+char xX(int n, int f)
+{
+    char c;
+
+    c = n + '0';
+    if (n > 9)
+    {
+        if (n == 10)
+            c = 'a';
+        else if (n == 11)
+            c = 'b';
+        else if (n == 12)
+            c = 'c';
+        else if (n == 13)
+            c = 'd';
+        else if (n == 14)
+            c = 'e';
+        else if (n == 15)
+            c = 'f';
+        if (f  == 2)
+            return (c - 32);
+        else
+            return (c);
+    }
+    return (c);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+else if (f[ii] == '%')
         printf ("%c", '%');
     else if (f[ii] != '\0')
         printf ("%c", f[ii]);
