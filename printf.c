@@ -1,4 +1,53 @@
- int     type_xX(va_list *vl, int m[12])
+ int     print_c(int m[8], char n)
+{
+    if (m[0] == 0)
+    {
+        if (m[4] == 1)
+            writeln(m[5] - 1, '0');
+        else 
+            writeln(m[5] - 1, ' ');
+    }
+    writeln(1 , n);
+    if (m[0] == 1)
+        writeln(m[5] - 1, ' ');
+    return 0;
+}
+
+int     type_c(va_list *vl, int m[12])
+{
+    char n;
+
+    n = va_arg(*vl, int);
+    print_c(m, n);
+    //printf("%s",a);
+    return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int     type_xX(va_list *vl, int m[12])
 {
     int n;
     int k;
