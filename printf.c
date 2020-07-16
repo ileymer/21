@@ -1,4 +1,63 @@
- int     print_c(int m[8], char n)
+ 
+void writes(char *s, int m[12])
+{
+    int i;
+
+    i =0;
+    while (s[i] != '\0')
+    {
+        write (1, &s[i], 1);
+        m[11]++;
+        i++;
+    }
+}
+
+int     print_s(int m[8], char *n)
+{
+    if (m[0] == 0)
+    {
+        if (m[4] == 1)
+            writeln(m[5] - strlen(n), '0');
+        else 
+            writeln(m[5] - strlen(n), ' ');
+    }
+    writes(n);
+    if (m[0] == 1)
+        writeln(m[5] - strlen(n), ' ');
+    return 0;
+}
+
+
+int     type_s(va_list *vl, int m[12])
+{
+    char *n;
+
+    n = (char *)va_arg(*vl, int);
+    print_s(m, n);
+    //printf("%s",a);
+    return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int     print_c(int m[8], char n)
 {
     if (m[0] == 0)
     {
