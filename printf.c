@@ -1,4 +1,194 @@
- 
+ int     fttoc1(char t[100], int j)
+{
+    int f;
+
+    f = 1;
+    while (j >= 0)
+    {
+        if (48 <= t[j] && t[j] < 57 && f == 1)
+        {
+            t[j]++;
+            f = 0;
+        }
+        if (t[j] == '9' && f == 1)
+        {
+            t[j] = 48;
+            if (j == 0)
+                return (1);
+        }
+        j--;      
+    }
+    return (0);
+}
+
+int     fttoc(char t[100], double  n, int m[12])
+{
+    size_t k;
+    int p;
+    int j;
+
+    j = 0;
+    p = m[6];
+    if (n < 0)
+        n = n * (-1);
+    k = (size_t)n;
+    n = n - (double )(k);
+    while (p-- > 0 && j < 100)
+    {
+         n = n * 10;
+         k = (size_t)(n);
+         t[j++] = k + '0';
+         n = n - (double )(k);  
+    }
+    if ((int)(n * 10) >= 5)
+        m[8] = fttoc1(t, --j);
+    return (0);
+}
+
+int     print_f(char t[100], int m[12], char a[21], double  n)
+{
+    if (m[0] == 0)
+        if (m[4] == 1)
+        {
+            signf(n, m[1], m[2]);
+            writeln(m[5] - m[6] - m[1] - m[2] - m[9] - 1, '0');
+        }
+        else
+        {
+            writeln(m[5] - m[6] - m[1] - m[2] - m[9] - 1, ' ');
+            signf(n, m[1], m[2]);   
+        }
+    if (m[0] == 1)
+        signf(n, m[1], m[2]);
+    print_di1(a);
+    writeln(1, '.'); 
+    print_f1(t);
+    writeln(m[6] - 100, '0');
+    if (m[0] == 1)
+        writeln(m[5] - m[6] - m[1] - m[2] - m[9] - 1, ' ');
+}
+int     type_f(va_list *vl, int m[12])
+{
+    double   n;
+    long long int     k;
+    char a[21];
+    char t[100];
+
+    if (m[6] == 0)
+        m[6] = 6;
+    n = (double )(va_arg(*vl, double));
+    di1(a);
+    f1(t);
+    fttoc(t, n, m);
+    k = n;
+    m[9] = ftoc(a, k + m[8], m);
+    print_f(t, m, a, n);
+
+}
+
+void     print_f1(char a[100])
+{
+    int i;
+
+    i = 0;
+    while (i < 100)
+    {
+        if (('0' <= a[i]) && (a[i] <= '9'))
+            printf("%c", a[i]);
+        i++;
+    }
+}
+
+void signf(double n, int f1, int f2)
+{
+    if (n < 0 )
+        printf("%c", '-');
+    else
+    {
+        if (f1 == 1)
+            printf("%c", '+');
+        if (f2 == 1)
+            printf("%c", ' ');
+    } 
+}
+
+void    f1(char a[100])
+{
+    int i;
+
+    i = 0;
+    while (i <100)
+        a[i++] = '.'; 
+}
+
+int    ftoc(char a[21], long long int n, int m[12])
+{
+    int k;
+	int i;
+
+    k = 0;
+    i = 0;
+    if (n < 0)
+    {
+        if (m[2] != 1)
+            m[1] = 1;
+        n = n * (-1);
+    }
+    if (n == 0)
+    {
+        k++;
+        a[i] = '0';
+    }
+    while (n > 0)
+	{
+		a[i++] = (n % 10) + '0';
+		n = n / 10;
+        k++;
+	}
+    return k;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void writes(char *s, int m[12])
 {
     int i;
