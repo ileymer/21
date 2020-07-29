@@ -1,0 +1,160 @@
+#ifndef PRINTLIB_H
+# define PRINTLIB_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <limits.h>
+
+
+
+int     flag1(char c);
+void writeln(int n, char c, int m[12]);
+void nol(int m[13]);
+void    di1(char a[21]);
+void signdi(int n, int f1, int f2,int m[12]);
+void     print_di1(char a[21], int m[12]);
+int     print_di(char a[15], int m[8], int k, int n);
+int     itoc(char a[21], int n, int m[12]);
+int     type_di(va_list *vl, int m[12]);
+int     distrib_types(int *i, char *f, int m[12], va_list *vl);
+int     accuracy(int *i, char *f, int m[12], va_list *vl);
+int     width(int *i, char *f, int m[12], va_list *vl);
+int     flag(int *i, char *f, va_list *vl);
+int ft_printf(char *flags, ...);
+int     litoc(char a[21], long int n, int m[12]);
+int     type_ldi(va_list *vl, int m[12]);
+int     distrib_l(int *i, char *f, int m[12], va_list *vl);
+int     distrib_ll(int *i, char *f, int m[12], va_list *vl);
+int     print_ldi(char a[15], int m[8], int k, long int n);
+void signldi(long int n, int f1, int f2,int m[12]);
+int     llitoc(char a[21], long long int n, int m[12]);
+int     type_lldi(va_list *vl, int m[12]);
+int     print_lldi(char a[15], int m[8], int k, long long int n);
+void signlldi(long long int n, int f1, int f2,int m[12]);
+int     hitoc(char a[21], short int n, int m[12]);
+int     type_hdi(va_list *vl, int m[12]);
+int     print_hdi(char a[15], int m[8], int k, short int n);
+void signhdi(short int n, int f1, int f2,int m[12]);
+int     distrib_h(int *i, char *f, int m[12], va_list *vl);
+int     type_x(va_list *vl, int m[12]);
+void    signx(int f, int f1, int m[12], unsigned int n);
+int     print_x(char a[15], int m[8], int k, unsigned int n);
+int     xtoc(char a[21], unsigned int n, int m[12]);
+char    paste_x(unsigned int n, int f);
+void     print_x1(char a[21], int m[12]);
+int     type_lx(va_list *vl, int m[12]);
+void    signlx(int f, int f1, int m[12], unsigned long int n);
+int     print_lx(char a[15], int m[8], int k, unsigned long int n);
+int     lxtoc(char a[21], unsigned long int n, int m[12]);
+char lxX(long int n, int f);
+int     type_llx(va_list *vl, int m[12]);
+void    signllx(int f, int f1, int m[12], unsigned long long int n);
+int     print_llx(char a[15], int m[8], int k, unsigned long long int n);
+int     llxtoc(char a[21], unsigned long long int n, int m[12]);
+char minusllxX(long long int n, int f,int i, int m[12]);
+char llxX(long long int n, int f);
+int     type_hx(va_list *vl, int m[12]);
+void    signhx(int f, int f1, int m[12], unsigned short int n);
+int     print_hx(char a[15], int m[8], int k, unsigned short int n);
+int     hxtoc(char a[21], unsigned short int n, int m[12]);
+int     type_o(va_list *vl, int m[12]);
+
+int     otoc(char a[21], unsigned int n, int m[12]);
+
+int     lotoc(char a[21], unsigned long int n, int m[12]);
+int     type_lo(va_list *vl, int m[12]);
+
+int     type_llo(va_list *vl, int m[12]);
+int     llotoc(char a[21], unsigned long long int n, int m[12]);
+
+int     type_ho(va_list *vl, int m[12]);
+int     hotoc(char a[21], unsigned short  int n, int m[12]);
+int		print_ho(char a[50], int m[12], int k, unsigned short int n);
+
+int     type_hho(va_list *vl, int m[12]);
+int     hhotoc(char a[21], unsigned char n, int m[12]);
+int		print_hho(char a[50], int m[12], int k, unsigned char n);
+
+int     print_c(int m[12], char n);
+int     type_c(va_list *vl, int m[12]);
+void writes(char *s, int m[12]);
+int     print_s(int m[8], char *n);
+int     type_s(va_list *vl, int m[12]);
+void print_s1(int m[12], char *n, int f);
+
+void    nulls(int m[12]);
+
+int     hhitoc(char a[21], signed char n, int m[12]);
+int     type_hhdi(va_list *vl, int m[12]);
+int     print_hhdi(char a[15], int m[8], int k, signed char n);
+void signhhdi(signed char n, int f1, int f2,int m[12]);
+int     type_hhx(va_list *vl, int m[12]);
+void    signhhx(int f, int f1, int m[12], unsigned char n);
+int     print_hhx(char a[15], int m[8], int k, unsigned char n);
+int     hhxtoc(char a[21], unsigned char n, int m[12]);
+char minushhxX(signed char n, int f,int i, int m[12]);
+int hhfxX(char a[21], int f);
+char hhxX(signed char  n, int f);
+int     utoc(char a[21], unsigned int n, int m[12]);
+int     type_u(va_list *vl, int m[12]);
+int     print_u(char a[15], int m[8], int k, unsigned int n);
+void signu(unsigned int n, int f1, int f2,int m[12]);
+
+int     lutoc(char a[21], unsigned long int n, int m[12]);
+int     type_lu(va_list *vl, int m[12]);
+int     print_lu(char a[15], int m[8], int k, unsigned long int n);
+
+int     llutoc(char a[21], unsigned long long int n, int m[12]);
+int     print_llu(char a[15], int m[8], int k, unsigned long long int n);
+int     type_llu(va_list *vl, int m[12]);
+
+int     hutoc(char a[21], unsigned short int n, int m[12]);
+int     type_hu(va_list *vl, int m[12]);
+int     print_hu(char a[15], int m[8], int k, unsigned short int n);
+
+int     hhutoc(char a[21], unsigned char  n, int m[12]);
+int     type_hhu(va_list *vl, int m[12]);
+int     print_hhu(char a[15], int m[8], int k, unsigned char  n);
+
+
+int     fttoc1(char t[100], int j);
+int     fttoc(char t[100], double  n, long long r,int m[12]);
+int     print_f(char t[100], int m[12], char a[21], double  n);
+int     type_f(va_list *vl, int m[12]);
+void     print_f1(char a[100]);
+void signf(double n, int f1, int f2);
+void    f1(char a[100]);
+int    ftoc(char a[21], long long int n, int m[12]);
+void check_f(int m[12], long long r, double n);
+void pr_inf(int m[12], char a[21],double n);
+void	print_d1(char a[21], int m[12]);
+
+int     type_p(va_list *vl, int m[12]);
+
+void     print_bon1(char a[50], int m[12]);
+int     print_bon(char a[50], int m[8], int k, unsigned int n);
+int     bon_toc(char a[50], unsigned int n, int m[12], int o);
+void    b_mas(char a[50]);
+void    type_b(va_list *vl, int m[12], int o);
+int bon_flag(char c);
+int     distrib_b(int *i, char *f, int m[12], va_list *vl);
+
+int check_hlb(char c);
+int hlb(int *i, char *f, int m[12], va_list *vl);
+int csp(va_list *vl, int m[12], char f);
+int check_csp(char c);
+int dioux(va_list *vl, int m[12], char f);
+int check_dioux(char c);
+int		print_llo(char a[50], int m[12], int k, unsigned long long int n);
+int		print_lo(char a[50], int m[12], int k, unsigned long int n);
+
+
+
+
+void nil(char a[21]);
+
+#endif
