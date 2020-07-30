@@ -13,13 +13,13 @@
 #ifndef PRINTLIB_H
 # define PRINTLIB_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <limits.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
+# include <string.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <limits.h>
 
 int		flag1(char c);
 void	writeln(int n, char c, int m[13]);
